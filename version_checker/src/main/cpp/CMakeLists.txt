@@ -9,8 +9,16 @@ cmake_minimum_required(VERSION 3.10.2)
 
 project("version_checker")
 
+include_directories(
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../../../third_party/opencv/native/jni/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../../../third_party/eigen)
+
+add_library(libc++_shared SHARED IMPORTED)
+set_target_properties(libc++_shared
+        PROPERTIES IMPORTED_LOCATION
+        C:/Users/myama/AppData/Local/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/libs/${ANDROID_ABI}/libc++_shared.so)
+
 add_library(lib_opencv SHARED IMPORTED)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../../third_party/opencv/native/jni/include)
 set_target_properties(lib_opencv
         PROPERTIES IMPORTED_LOCATION
         ${CMAKE_CURRENT_SOURCE_DIR}/../../../../third_party/opencv/native/libs/${ANDROID_ABI}/libopencv_java4.so)
@@ -49,6 +57,7 @@ find_library( # Sets the name of the path variable.
 
 target_link_libraries( # Specifies the target library.
         version_checker
+        libc++_shared
         lib_opencv
 
         # Links the target library to the log library

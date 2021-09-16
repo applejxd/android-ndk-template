@@ -6,4 +6,5 @@ class VersionChecker {
     protected fun finalize() = delete()
 
     external fun getOpenCvVersion(): String
+    external fun getEigenVersion(): String
 }

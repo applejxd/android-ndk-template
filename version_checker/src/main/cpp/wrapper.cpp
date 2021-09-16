@@ -34,4 +34,11 @@ Java_com_example_version_1checker_VersionChecker_getOpenCvVersion(
     return env->NewStringUTF(version.c_str());
 }
 
+JNIEXPORT jstring JNICALL
+Java_com_example_version_1checker_VersionChecker_getEigenVersion(
+        JNIEnv* env, jobject j_this) {
+    string version = getInstance(env, j_this)->GetEigenVersion();
+    return env->NewStringUTF(version.c_str());
+}
+
 }

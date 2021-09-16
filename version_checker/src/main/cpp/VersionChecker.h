@@ -12,7 +12,8 @@ using std::string;
 
 class VersionChecker {
 public:
-    static string GetOpenCvVersion();
+    string GetOpenCvVersion();
+    string GetEigenVersion();
 };
 
 
